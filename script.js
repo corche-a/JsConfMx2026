@@ -1,11 +1,13 @@
 const boton = document.querySelector('#boton-vela');
 const ofrenda = document.querySelector('#ofrenda');
 
-boton.addEventListener('click', () => {
-  const encendida = ofrenda.classList.toggle('encendida');
-  boton.setAttribute('aria-pressed', encendida);
-  boton.textContent = encendida ? 'Apagar la vela' : 'Encender la vela';
-});
+if (boton && ofrenda) {
+  boton.addEventListener('click', () => {
+    const encendida = ofrenda.classList.toggle('encendida');
+    boton.setAttribute('aria-pressed', encendida);
+    boton.textContent = encendida ? 'Apagar la vela' : 'Encender la vela';
+  });
+}
 
 // LLUVIA BINARIA (EFECTO MATRIX)
 const canvas = document.getElementById('binary-bg');
@@ -24,9 +26,11 @@ if (canvas) {
   initCanvas();
 
   function drawBinary() {
+    // Fondo negro semitransparente para efecto estela
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00ff00';
+
+    ctx.fillStyle = '#00FF00';
     ctx.font = '15px Courier New';
 
     drops.forEach((y, i) => {
