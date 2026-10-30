@@ -487,3 +487,32 @@ body {
     transition-delay: 0s !important;
   }
 }
+/* ESTILO HACKER */
+body {
+  background-color: #000 !important;
+  color: #00ff00 !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+h1 {
+  color: #00ff00 !important;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00 !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+#boton-vela {
+  background: transparent !important;
+  border: 2px solid #00ff00 !important;
+  color: #00ff00 !important;
+  font-family: 'Courier New', monospace !important;
+  text-shadow: 0 0 8px #00ff00 !important;
+  box-shadow: 0 0 12px #00ff00 !important;
+}
+
+.dedicatoria {
+  border: 1px solid #00ff00 !important;
+  background: rgba(0, 255, 0, 0.05) !important;
+  color: #00ff00 !important;
+}
+
+--acento: #00ff00;
