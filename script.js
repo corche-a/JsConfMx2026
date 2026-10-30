@@ -2,18 +2,16 @@ const boton = document.querySelector('#boton-vela');
 const ofrenda = document.querySelector('#ofrenda');
 
 boton.addEventListener('click', () => {
-  // Toggle para encender/apagar la vela
   const encendida = ofrenda.classList.toggle('encendida');
   boton.setAttribute('aria-pressed', encendida);
   boton.textContent = encendida ? 'Apagar la vela' : 'Encender la vela';
 });
 
-// LLUVIA BINARIA
+// LLUVIA BINARIA (EFECTO MATRIX)
 const canvas = document.getElementById('binary-bg');
 
 if (canvas) {
   const ctx = canvas.getContext('2d');
-  
   let cols, drops;
 
   function initCanvas() {
@@ -34,7 +32,7 @@ if (canvas) {
     drops.forEach((y, i) => {
       const text = Math.random() > 0.5 ? '1' : '0';
       ctx.fillText(text, i * 20, y * 20);
-      
+
       if (y * 20 > canvas.height && Math.random() > 0.975) {
         drops[i] = 0;
       }

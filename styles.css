@@ -1,20 +1,5 @@
-/*
-  TODO 4: Elige el color de tu ofrenda.
-  Cambia el valor de --acento por uno de estos colores o por otro que te guste:
-    Cempasúchil   #FF9F1C
-    Rosa mexicano #FF4FA3
-    Turquesa      #3FD0C2
-    Rojo          #F22727
-    Lila          #B98CFF
-    Hacker Verde  #00FF00
-  Ejemplo: --acento: #00FF00;
-*/
 :root {
   --acento: #00FF00;
-}
-
-/* A partir de aquí no necesitas cambiar nada, pero puedes explorar */
-:root {
   --noche: #1E1033;
   --noche-clara: #2C1A4A;
   --cera: #FBEBD3;
@@ -39,14 +24,23 @@ body {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  background:
-    radial-gradient(120% 70% at 50% 110%, var(--morado-profundo), transparent 70%),
-    var(--noche);
-  color: var(--cera);
-  font-family: var(--fuente-texto);
+  background-color: #000 !important;
+  color: #00ff00 !important;
+  font-family: 'Courier New', monospace !important;
   font-size: 1.0625rem;
   line-height: 1.55;
   overflow-x: hidden;
+}
+
+/* Canvas para la lluvia binaria (fondo absoluto) */
+#binary-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .sr-only {
@@ -105,13 +99,12 @@ body {
   text-align: center;
 }
 
-/* Luz cálida que llena la página cuando la vela está encendida */
 .ofrenda::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(55% 45% at 50% 62%, rgb(255 150 50 / 0.24), transparent 72%);
+  background: radial-gradient(55% 45% at 50% 62%, rgb(0 255 0 / 0.12), transparent 72%);
   opacity: 0;
   transition: opacity 1.2s ease;
   pointer-events: none;
@@ -120,14 +113,14 @@ body {
 .titulo {
   max-width: 14ch;
   margin: 0;
-  font-family: var(--fuente-titulo);
+  font-family: 'Courier New', monospace !important;
   font-size: clamp(2.5rem, 8.5vw, 5.25rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--acento);
+  color: #00ff00 !important;
   text-wrap: balance;
-  text-shadow: -4px 4px 0 #F9CA22;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00 !important;
 }
 
 /* Altar */
@@ -148,7 +141,9 @@ body {
   width: min(34rem, 100%);
   min-height: 7.5rem;
   padding: 1.25rem 1.5rem;
-  border: 2px dashed rgb(251 235 211 / 0.22);
+  border: 1px solid #00ff00 !important;
+  background: rgba(0, 255, 0, 0.05) !important;
+  color: #00ff00 !important;
   border-radius: 14px;
   transition: border-color 0.8s ease, background-color 0.8s ease, box-shadow 0.8s ease;
 }
@@ -160,7 +155,7 @@ body {
 }
 
 .pista {
-  color: rgb(251 235 211 / 0.6);
+  color: rgba(0, 255, 0, 0.7);
   font-style: italic;
 }
 
@@ -183,18 +178,17 @@ body {
   margin-top: 4.5rem;
 }
 
-/* Foto opcional junto a la vela */
 .retrato {
   position: relative;
   z-index: 1;
   width: clamp(84px, 22vw, 116px);
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border: 5px solid var(--acento);
+  border: 3px solid #00ff00;
   border-radius: 6px;
-  outline: 2px solid rgb(251 235 211 / 0.6);
+  outline: 2px solid rgba(0, 255, 0, 0.4);
   outline-offset: 3px;
-  box-shadow: 0 10px 24px rgb(0 0 0 / 0.45);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
   rotate: -3deg;
   filter: brightness(0.55) saturate(0.7);
   transition: filter 1s ease;
@@ -214,7 +208,7 @@ body {
   width: 360px;
   height: 360px;
   translate: -50% 50%;
-  background: radial-gradient(circle, rgb(255 190 90 / 0.4), rgb(255 120 30 / 0.12) 40%, transparent 68%);
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.3), rgba(0, 255, 0, 0.1) 40%, transparent 68%);
   opacity: 0;
   transition: opacity 1s ease;
   pointer-events: none;
@@ -224,10 +218,9 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 8px 8px 3px 3px;
-  background: linear-gradient(90deg, #D9BE95, #FFF6E6 38%, #F1DDBC 62%, #C9AA7E);
+  background: linear-gradient(90deg, #113311, #00ff00 38%, #115511 62%, #002200);
 }
 
-/* Mecha */
 .cera::before {
   content: "";
   position: absolute;
@@ -237,10 +230,9 @@ body {
   height: 12px;
   translate: -50% 0;
   border-radius: 2px;
-  background: #3B2A22;
+  background: #00ff00;
 }
 
-/* Gota de cera */
 .cera::after {
   content: "";
   position: absolute;
@@ -249,7 +241,7 @@ body {
   width: 7px;
   height: 22px;
   border-radius: 0 0 6px 6px;
-  background: #FFF6E6;
+  background: rgba(0, 255, 0, 0.4);
 }
 
 .llama {
@@ -260,8 +252,8 @@ body {
   height: 46px;
   translate: -50% 0;
   border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
-  background: radial-gradient(ellipse 50% 60% at 50% 72%, #FFFFFF 0 18%, #FFE68A 34%, #FFA41F 62%, rgb(255 90 0 / 0) 78%);
-  filter: drop-shadow(0 0 12px rgb(255 170 60 / 0.9));
+  background: radial-gradient(ellipse 50% 60% at 50% 72%, #FFFFFF 0 18%, #00FF00 50%, transparent 78%);
+  filter: drop-shadow(0 0 12px #00ff00);
   transform: scale(0);
   transform-origin: 50% 92%;
   transition: transform 0.6s cubic-bezier(0.2, 1.4, 0.4, 1);
@@ -275,17 +267,15 @@ body {
   border-radius: 4px 4px 0 0;
 }
 
-/* Superficie superior de cada nivel */
 .nivel::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
   height: 8px;
   border-radius: 4px 4px 0 0;
-  background: rgb(255 255 255 / 0.18);
+  background: rgba(0, 255, 0, 0.2);
 }
 
-/* Orilla de tela recortada */
 .nivel::after {
   content: "";
   position: absolute;
@@ -295,21 +285,21 @@ body {
 }
 
 .nivel-1 {
-  --tela: var(--acento);
+  --tela: #00aa00;
   z-index: 3;
   width: 48%;
   background: var(--tela);
 }
 
 .nivel-2 {
-  --tela: var(--morado);
+  --tela: #007700;
   z-index: 2;
   width: 72%;
   background: var(--tela);
 }
 
 .nivel-3 {
-  --tela: var(--morado-profundo);
+  --tela: #004400;
   z-index: 1;
   width: 96%;
   background: var(--tela);
@@ -324,10 +314,10 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   background:
-    radial-gradient(circle, #FFD86B 0 16%, transparent 17%),
-    radial-gradient(circle, transparent 0 40%, rgb(150 40 0 / 0.25) 41% 43%, transparent 44%),
-    repeating-conic-gradient(#FF9F1C 0 12deg, #F27410 12deg 24deg);
-  box-shadow: inset 0 -5px 8px rgb(110 25 0 / 0.45);
+    radial-gradient(circle, #00ff00 0 16%, transparent 17%),
+    radial-gradient(circle, transparent 0 40%, rgba(0, 255, 0, 0.25) 41% 43%, transparent 44%),
+    repeating-conic-gradient(#00ff00 0 12deg, #008800 12deg 24deg);
+  box-shadow: inset 0 -5px 8px rgba(0, 0, 0, 0.8);
 }
 
 .flor-a { left: -6%; --tamano: 46px; }
@@ -348,8 +338,8 @@ body {
   width: 18px;
   height: 26px;
   border-radius: 3px 3px 5px 5px;
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.25), rgb(251 235 211 / 0.85) 30%);
-  box-shadow: inset 0 0 0 2px rgb(255 79 163 / 0.55);
+  background: linear-gradient(180deg, rgba(0, 255, 0, 0.3), rgba(0, 255, 0, 0.8) 30%);
+  box-shadow: inset 0 0 0 2px #00ff00;
 }
 
 .veladora::before {
@@ -361,8 +351,8 @@ body {
   height: 16px;
   translate: -50% 0;
   border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
-  background: radial-gradient(ellipse 50% 60% at 50% 72%, #FFFFFF 0 15%, #FFD86B 40%, #FF9F1C 70%, transparent 80%);
-  filter: drop-shadow(0 0 6px rgb(255 170 60 / 0.9));
+  background: radial-gradient(ellipse 50% 60% at 50% 72%, #FFFFFF 0 15%, #00FF00 70%, transparent 80%);
+  filter: drop-shadow(0 0 6px #00ff00);
   transform: scale(0);
   transform-origin: 50% 90%;
   transition: transform 0.4s ease var(--retraso, 0s);
@@ -373,7 +363,6 @@ body {
 .veladora:nth-child(3) { right: 10%; --retraso: 0.25s; }
 .veladora:nth-child(4) { right: 3%; --retraso: 0.45s; }
 
-/* En pantallas pequeñas, menos flores y veladoras para que no se encimen */
 @media (max-width: 480px) {
   .flor-b,
   .flor-c,
@@ -399,17 +388,22 @@ body {
 .boton {
   margin-top: clamp(2rem, 6vw, 2.75rem);
   padding: 0.9em 1.9em;
-  border: 2px solid var(--acento);
+  border: 2px solid #00ff00 !important;
   border-radius: 999px;
-  background: var(--acento);
-  color: var(--noche);
-  font: 600 1.125rem/1 var(--fuente-texto);
+  background: transparent !important;
+  color: #00ff00 !important;
+  font-family: 'Courier New', monospace !important;
+  font-weight: 600;
+  font-size: 1.125rem;
   cursor: pointer;
+  text-shadow: 0 0 8px #00ff00 !important;
+  box-shadow: 0 0 12px #00ff00 !important;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
 }
 
 .boton:hover {
   transform: translateY(-1px);
+  background: rgba(0, 255, 0, 0.15) !important;
 }
 
 .boton:active {
@@ -417,7 +411,7 @@ body {
 }
 
 .boton:focus-visible {
-  outline: 3px solid var(--cera);
+  outline: 3px solid #00ff00;
   outline-offset: 4px;
 }
 
@@ -425,10 +419,10 @@ body {
   padding: 1.5rem 1.25rem 2rem;
   text-align: center;
   font-size: 0.875rem;
-  color: rgb(251 235 211 / 0.55);
+  color: rgba(0, 255, 0, 0.6);
 }
 
-/* Estado encendido: script.js agrega la clase "encendida" a la ofrenda */
+/* Estado encendido */
 
 .encendida::before,
 .encendida .vela::before {
@@ -446,13 +440,14 @@ body {
 
 .encendida .retrato {
   filter: none;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
 }
 
 .encendida .dedicatoria {
   border-style: solid;
-  border-color: var(--acento);
-  background-color: rgb(255 255 255 / 0.05);
-  box-shadow: 0 0 40px rgb(255 160 60 / 0.18);
+  border-color: #00ff00 !important;
+  background-color: rgba(0, 255, 0, 0.1) !important;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
 }
 
 .encendida .pista {
@@ -465,11 +460,6 @@ body {
   transform: none;
   visibility: visible;
   transition-delay: 0.35s;
-}
-
-.encendida .boton {
-  background: transparent;
-  color: var(--acento);
 }
 
 @keyframes parpadeo {
@@ -487,43 +477,4 @@ body {
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
-}
-
-/* ESTILO HACKER OVERRIDE */
-body {
-  background-color: #000 !important;
-  color: #00ff00 !important;
-  font-family: 'Courier New', monospace !important;
-}
-
-h1 {
-  color: #00ff00 !important;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00 !important;
-  font-family: 'Courier New', monospace !important;
-}
-
-#boton-vela {
-  background: transparent !important;
-  border: 2px solid #00ff00 !important;
-  color: #00ff00 !important;
-  font-family: 'Courier New', monospace !important;
-  text-shadow: 0 0 8px #00ff00 !important;
-  box-shadow: 0 0 12px #00ff00 !important;
-}
-
-.dedicatoria {
-  border: 1px solid #00ff00 !important;
-  background: rgba(0, 255, 0, 0.05) !important;
-  color: #00ff00 !important;
-}
-
-/* Canvas para la lluvia binaria */
-#binary-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  pointer-events: none;
 }
