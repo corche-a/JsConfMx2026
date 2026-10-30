@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Canvas para la lluvia binaria (efecto hacker de fondo) -->
+    <canvas id="binary-bg"></canvas>
+
     <!-- Papel picado: decoración, no necesitas cambiarlo -->
     <svg width="0" height="0" class="sr-only" aria-hidden="true">
       <symbol id="bandera" viewBox="0 0 100 120">
@@ -39,35 +42,21 @@
     </div>
 
     <main id="ofrenda" class="ofrenda">
-      <!--
-        TODO 1: ¿Para quién es tu ofrenda? Escribe su nombre, un apodo o el tema de tu ofrenda.
-        Ejemplo: <h1 class="titulo">Para mi abuela Lupita</h1>
-      -->
-      <h1 class="titulo">Escribe el título de tu ofrenda</h1>
+      <!-- TODO 1: Cambia este texto por el título de tu ofrenda -->
+      <h1 class="titulo">Para Chiquis</h1>
 
       <div class="altar">
         <div class="dedicatoria" id="dedicatoria">
           <p class="pista">Enciende la vela para leer la dedicatoria.</p>
-          <!--
-            TODO 2: Escribe unas palabras para quien recuerdas: una persona, una mascota
-            o un personaje. Tu página va a ser pública,
-            así que comparte solo lo que quieras que cualquiera pueda leer.
-            Ejemplo: Por sus tamales de los domingos y por enseñarme a bailar cumbia en la cocina.
-          -->
+          <!-- TODO 2: Cambia este texto por tu dedicatoria personal -->
           <p class="texto-dedicatoria">
-            Escribe aquí tu dedicatoria: a quién recuerdas y por qué.
+            Por todos los momentos compartidos, las alegrías y los recuerdos imborrables que dejamos en el código y en la vida.
           </p>
         </div>
 
         <div class="centro">
-          <!--
-            TODO 3: Pon una foto de quien recuerdas.
-            Arrastra tu foto (JPG o PNG) a la lista de archivos del editor.
-            Luego cambia "foto-ejemplo.svg" por el nombre de tu foto y describe en alt qué se ve.
-            Tu página va a ser pública, así que usa una foto que quieras compartir.
-            Ejemplo: <img class="retrato" src="abuela-lupita.jpg" alt="Mi abuela Lupita en su cocina" />
-          -->
-          <img class="retrato" src="chiquis.jpeg" alt="Espacio para la foto de la ofrenda" />
+          <!-- TODO 3: Confirmado con la imagen 'chiquis.jpeg' -->
+          <img class="retrato" src="chiquis.jpeg" alt="Fotografía de Chiquis" />
           <div class="vela" aria-hidden="true">
             <span class="llama"></span>
             <span class="cera"></span>
@@ -102,8 +91,6 @@
     <footer class="pie">
       Publicada con AWS Amplify Hosting para JSConf México 2026
     </footer>
-    <!-- LLUVIA BINARIA -->
-    <canvas id="binary-bg"></canvas>
 
     <script src="script.js"></script>
   </body>
