@@ -19,12 +19,18 @@
   box-sizing: border-box;
 }
 
+/* El fondo negro se asigna a HTML */
+html {
+  background-color: #000 !important;
+}
+
+/* Body totalmente transparente para dejar pasar el canvas */
 body {
   margin: 0;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  background-color: #000 !important;
+  background: transparent !important;
   color: #00ff00 !important;
   font-family: 'Courier New', monospace !important;
   font-size: 1.0625rem;
@@ -32,23 +38,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Canvas de lluvia binaria fijo al fondo */
+/* Canvas fijo entre el HTML y el contenido */
 #binary-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
-}
-
-/* Forzar capas superiores para evitar que la lluvia binaria obscurezca el contenido */
-.papel-picado,
-.ofrenda,
-.pie {
-  position: relative;
-  z-index: 1;
 }
 
 .sr-only {
@@ -61,6 +59,8 @@ body {
 /* Papel picado */
 
 .papel-picado {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   gap: clamp(0.35rem, 1vw, 0.75rem);
@@ -98,6 +98,8 @@ body {
 /* Página */
 
 .ofrenda {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -251,7 +253,7 @@ body {
   background: rgba(0, 255, 0, 0.4);
 }
 
-/* Pañuelo rojo rodeando la mitad inferior de la vela */
+/* Pañuelo rojo en la base de la vela */
 .panuelo {
   position: absolute;
   left: -5px;
@@ -462,6 +464,8 @@ body {
 }
 
 .pie {
+  position: relative;
+  z-index: 1;
   padding: 1.5rem 1.25rem 2rem;
   text-align: center;
   font-size: 0.875rem;

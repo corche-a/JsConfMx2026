@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Canvas de lluvia binaria en segundo plano -->
+    <!-- Canvas de lluvia binaria -->
     <canvas id="binary-bg"></canvas>
 
     <!-- Papel picado decorativo -->
@@ -28,4 +28,68 @@
           M18 82L25 90 18 98 11 90Z M82 82L89 90 82 98 75 90Z M50 86L54 92 50 98 46 92Z" />
       </symbol>
     </svg>
-    <div class
+    <div class="papel-picado" aria-hidden="true">
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+      <svg class="bandera"><use href="#bandera" /></svg>
+    </div>
+
+    <main id="ofrenda" class="ofrenda">
+      <h1 class="titulo">Te extrañamos patas</h1>
+
+      <div class="altar">
+        <div class="dedicatoria" id="dedicatoria">
+          <p class="pista">Enciende la vela para leer la dedicatoria.</p>
+          <p class="texto-dedicatoria">
+            Ya no escucho tus ronquidos por las noches o tu insistencia en lamernos, tu panza enorme de barril y tus ojos botados, te extrañamos patas.
+          </p>
+        </div>
+
+        <div class="centro">
+          <img class="retrato" src="chiquis.jpeg" alt="Fotografía de Patas" />
+          <div class="vela" aria-hidden="true">
+            <span class="llama"></span>
+            <span class="cera"></span>
+            <span class="panuelo"></span>
+          </div>
+        </div>
+
+        <div class="nivel nivel-1" aria-hidden="true">
+          <span class="flor flor-a"></span>
+          <span class="flor flor-b"></span>
+          <span class="flor flor-c"></span>
+          <span class="flor flor-d"></span>
+        </div>
+        <div class="nivel nivel-2" aria-hidden="true">
+          <span class="veladora"></span>
+          <span class="veladora"></span>
+          <span class="veladora"></span>
+          <span class="veladora"></span>
+        </div>
+        <div class="nivel nivel-3" aria-hidden="true">
+          <span class="flor flor-e"></span>
+          <span class="flor flor-f"></span>
+          <span class="flor flor-g"></span>
+          <span class="flor flor-h"></span>
+        </div>
+      </div>
+
+      <button id="boton-vela" class="boton" type="button" aria-pressed="false" aria-controls="dedicatoria">
+        Encender la vela
+      </button>
+    </main>
+
+    <footer class="pie">
+      Publicada con AWS Amplify Hosting para JSConf México 2026
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
